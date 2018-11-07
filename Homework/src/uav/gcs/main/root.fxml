@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.media.*?>
+
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" styleClass="pane-view" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uav.gcs.main.RootController">
+   <top>
+       <Label id="header" alignment="CENTER" text="UAV Ground Control Station" textAlignment="CENTER" BorderPane.alignment="CENTER" />
+   </top>
+    <center>
+      <SplitPane fx:id="splitHudMissionPane" dividerPositions="0.5" BorderPane.alignment="BOTTOM_CENTER">
+         <items>
+              <VBox alignment="BOTTOM_CENTER" maxWidth="675">
+                  <children>
+                      <StackPane fx:id="hudStackPane">
+                          <children>
+                              <MediaView fx:id="mediaViewBackground" preserveRatio="false" />
+                          </children>
+                      </StackPane>
+
+                      <HBox fx:id="hudConnectionHBox" alignment="CENTER" spacing="20.0">
+                          <children>
+                              <Button fx:id="btnConfig" mnemonicParsing="false" prefWidth="80.0" text="Config" />
+                              <Button fx:id="btnConnect" mnemonicParsing="false" prefWidth="80.0" text="Connect" />
+                              <Button fx:id="btnArm" disable="true" mnemonicParsing="false" prefWidth="80.0" text="Arm" />
+                          </children>
+                          <padding><Insets bottom="10.0" left="10.0" right="10.0" top="10.0" /></padding>
+                      </HBox>
+
+                      <HBox fx:id="hudModeHBox" alignment="CENTER" spacing="20.0">
+                          <children>
+                              <TextField fx:id="txtNewAlt" maxWidth="45" promptText="Alt" />
+                              <Label text="M" />
+                              <Button fx:id="btnTakeoff" mnemonicParsing="false" prefWidth="75" text="TAKEOFF" />
+                              <Button fx:id="btnLand" mnemonicParsing="false" prefWidth="75" text="LAND" />
+                              <Button fx:id="btnHome" mnemonicParsing="false" prefWidth="75" text="RTL" />
+                              <Button fx:id="btnCamera" mnemonicParsing="false" prefWidth="75" text="Camera" />
+                          </children>
+                          <padding><Insets bottom="10.0" left="10.0" right="10.0" top="10.0" /></padding>
+                      </HBox>
+
+                      <TableView fx:id="tableState" styleClass="table-view" visible="true" />
+                  </children>
+              </VBox>
+              <StackPane fx:id="centerPane" alignment="TOP_RIGHT" />
+         </items>
+      </SplitPane>
+    </center>
+</BorderPane>

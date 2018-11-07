@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="500.0" maxWidth="700.0" minHeight="250.0" minWidth="700.0" prefHeight="250.0" prefWidth="700.0" styleClass="pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="uav.gcs.network.NetworkController">
+   <children>
+      <Button fx:id="btnApply" layoutX="278.0" layoutY="192.0" mnemonicParsing="false"
+              onAction="#handleBtnApply" prefHeight="40.0" prefWidth="70.0" styleClass="dialog-button" text="적용" />
+      <Button fx:id="btnCancel" layoutX="374.0" layoutY="192.0" mnemonicParsing="false"
+              onAction="#handleBtnCancel" prefHeight="40.0" prefWidth="70.0" text="취소" />
+      <RadioButton fx:id="radioUdp" layoutX="24.0" layoutY="35.0" mnemonicParsing="false" text="UDP">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="networkType" />
+         </toggleGroup>
+      </RadioButton>
+      <Label layoutX="457.0" layoutY="41.0" text="Local Port" />
+      <TextField fx:id="txtUdpLocalPort" layoutX="526.0" layoutY="28.0" prefHeight="40.0" prefWidth="158.0" text="14551" />
+      <Separator layoutX="25.0" layoutY="81.0" prefHeight="3.0" prefWidth="661.0" />
+      <Separator layoutX="25.0" layoutY="16.0" prefHeight="3.0" prefWidth="661.0" />
+      <Separator layoutX="26.0" layoutY="152.0" prefHeight="3.0" prefWidth="661.0" />
+      <TextField fx:id="txtTcpServerPort" layoutX="525.0" layoutY="97.0" prefHeight="40.0" prefWidth="158.0" text="50002" />
+      <Label layoutX="450.0" layoutY="110.0" text="Server Port" />
+      <RadioButton fx:id="radioTcp" layoutX="25.0" layoutY="105.0" mnemonicParsing="false" selected="true" text="TCP" toggleGroup="$networkType">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </RadioButton>
+      <Label layoutX="177.0" layoutY="110.0" text="Server IP" />
+      <TextField fx:id="txtTcpServerIP" layoutX="233.0" layoutY="98.0" prefHeight="40.0" prefWidth="164.0" text="localhost" />
+   </children>
+</AnchorPane>

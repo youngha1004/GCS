@@ -1,0 +1,48 @@
+#header{
+    -fx-font-size: 28pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-background-color: #1d1d1d;
+    -fx-text-fill: white;
+    -fx-opacity: 1;
+    -fx-padding: 5;
+}
+
+.table-view {
+    -fx-base: #1d1d1d;
+    -fx-control-inner-background: #1d1d1d;
+    -fx-background-color: #1d1d1d;
+    -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+    -fx-padding: 5;
+}
+
+.pane-view{
+    -fx-background-color: #1d1d1d;
+    -fx-padding: 5;
+}
+
+.split-pane{
+    -fx-background-color: #1d1d1d;
+    -fx-padding: 5;
+}
+
+Button {
+    -fx-padding: 5 5 5 5;
+    -fx-border-color: #e2e2e2;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #1d1d1d;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 9pt;
+    -fx-text-fill: #d8d8d8;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.button:hover {
+    -fx-background-color: #3a3a3a;
+}
+.button:pressed, .button:default:hover:pressed {
+    -fx-background-color:
+            linear-gradient(#ffdad6 0%, #ff443c 25%, #ff8280 75%, #ffb5b5 100%);
+    -fx-text-fill: #68fffa;
+}

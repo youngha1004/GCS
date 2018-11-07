@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane fx:id="stackPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uav.gcs.hud.HudController">
+   <children>
+       <Canvas fx:id="layer1" />
+       <Canvas fx:id="layer2" />
+       <Canvas fx:id="layer3" />
+       <Canvas fx:id="layer4" style="-fx-border-color: white" />
+      <BorderPane>
+         <left>
+            <VBox spacing="5.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox spacing="5.0" style="-fx-border-color: white; -fx-background-color: #00000088;">
+                     <children>
+                             <Label fx:id="lblSystemStatus" text="POWEROFF" textFill="WHITE" />
+                             <Label fx:id="lblArmed" text="DISARMED" textFill="WHITE" />
+                             <Label fx:id="lblMode" text="STABLIZED" textFill="WHITE" />
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <VBox spacing="5.0" style="-fx-border-color: white; -fx-background-color: #00000088;">
+                     <children>
+                             <Label fx:id="lblAirSpeed" text=" AS: 0.0 m/s " textFill="WHITE" />
+                             <Label fx:id="lblGroundSpeed" text=" GS: 0.0 m/s " textFill="WHITE" />
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </VBox>
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </BorderPane.margin>
+            </VBox>
+         </left>
+         <right>
+            <VBox BorderPane.alignment="TOP_RIGHT">
+               <children>
+                  <VBox>
+                     <children>
+                         <StackPane>
+                            <children>
+                                <ImageView fx:id="battery" fitHeight="40.0" fitWidth="60.0" pickOnBounds="true">
+                                    <image>
+                                        <Image url="@images/Battery.png" />
+                                    </image>
+                                </ImageView>
+                                <Label fx:id="lblBatteryLevel" alignment="CENTER_RIGHT" text="0 %" textFill="WHITE" />
+                            </children>
+                         </StackPane>
+                         <VBox alignment="TOP_RIGHT" spacing="5.0" style="-fx-border-color: white; -fx-background-color: #00000088;">
+                            <children>
+                                <Label fx:id="lblBatteryVoltage" text="0 V" textFill="WHITE" />
+                                <Label fx:id="lblBatteryCurrent" text="0 A" textFill="WHITE" />
+                            </children>
+                             <VBox.margin>
+                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                             </VBox.margin>
+                             <padding>
+                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                             </padding>
+                         </VBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_RIGHT" spacing="5.0" style="-fx-border-color: white; -fx-background-color: #00000088;">
+                     <children>
+                             <Label fx:id="lblTime" text="03:15:31" textFill="WHITE" />
+                             <Label fx:id="lblGpsFixed" text="GPS fixed" textFill="WHITE" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </VBox>
+         </right>
+         <center>
+             <Label fx:id="lblInfo" alignment="CENTER" textFill="RED" BorderPane.alignment="CENTER" />
+         </center>
+         <bottom>
+             <AnchorPane>
+                 <Label fx:id="lblWarning" alignment="BOTTOM_LEFT" textFill="RED" layoutX="275"/>
+             </AnchorPane>
+         </bottom>
+      </BorderPane>
+       <Canvas fx:id="layer5" />
+       <Canvas fx:id="layerWarning" />
+   </children>
+</StackPane>

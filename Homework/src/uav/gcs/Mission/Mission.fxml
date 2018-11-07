@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
+<?import javafx.scene.media.MediaView?>
+
+<HBox prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uav.gcs.Mission.MissionController">
+   <children>
+      <StackPane HBox.hgrow="ALWAYS">
+         <children>
+      	   <SplitPane dividerPositions="0.6605351170568562" orientation="VERTICAL">
+               <items>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <StackPane HBox.hgrow="ALWAYS">
+                           <children>
+                              <WebView fx:id="webView" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" />
+                              <Label fx:id="lblInfo" alignment="CENTER" contentDisplay="CENTER">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                        <Slider fx:id="zoomSlider" majorTickUnit="2.0" max="19.0" min="3.0" minorTickCount="1" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+                     </children>
+                  </HBox>
+                  <VBox styleClass="pane">
+                     <children>
+                        <HBox spacing="10.0">
+                           <children>
+                              <Button fx:id="btnAddTakeoff" maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" text="이륙추가" HBox.hgrow="ALWAYS" />
+                              <Button fx:id="btnAddLand" maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" text="착륙추가" HBox.hgrow="ALWAYS" />
+                              <Button fx:id="btnAddRTL" maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" text="홈복귀추가" HBox.hgrow="ALWAYS" />
+                              <Button fx:id="btnAddROI" maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" text="관심위치추가" HBox.hgrow="ALWAYS" />
+                              <Button fx:id="btnAddJump" maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" text="점프추가" HBox.hgrow="ALWAYS" />
+                              <Button fx:id="btnRemoveMissionItem" maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" text="선택항목삭제" HBox.hgrow="ALWAYS" />
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <TableView fx:id="missionTable" styleClass="pane">
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                  </VBox>
+               </items>
+             </SplitPane>
+         </children>
+      </StackPane>
+      <VBox alignment="TOP_CENTER" maxWidth="250">
+         <children>
+            <HBox alignment="CENTER" spacing="10.0">
+               <children>
+                  <Button fx:id="btnManual" alignment="CENTER" mnemonicParsing="false" onAction="#handleBtnManual" text="Manual">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Button>
+                  <CheckBox fx:id="checkManualMove" mnemonicParsing="false" text="Move" textFill="WHITE" />
+                  <CheckBox fx:id="checkManualAlt" mnemonicParsing="false" text="ALT" textFill="WHITE" />
+                  <TextField fx:id="txtManualAlt" prefWidth="40.0" />
+                  <Label text="M" textFill="WHITE" />
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <FlowPane alignment="CENTER" hgap="20.0" vgap="20.0">
+               <children>
+                  <Button fx:id="btnMissionMake" mnemonicParsing="false" onAction="#handleBtnMissionMake" prefWidth="90.0" text="미션 생성">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefWidth="90.0" text="미션 제거">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnMissionUpload" mnemonicParsing="false" onAction="#handleBtnMissionUpload" prefWidth="90.0" text="업로드">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefWidth="90.0" text="다운로드">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefWidth="90.0" text="미션시작">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefWidth="90.0" text="미션 중지">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnFileRead" mnemonicParsing="false" prefWidth="90.0" text="파일 읽기">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnFileWrite" mnemonicParsing="false" prefWidth="90.0" text="파일 저장">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </FlowPane>
+            <FlowPane alignment="CENTER" hgap="20.0" vgap="20.0">
+               <children>
+                  <Button mnemonicParsing="false" prefWidth="90.0" text="펜스 생성">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefWidth="90.0" text="펜스 제거">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefWidth="90.0" text="업로드">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefWidth="90.0" text="다운로드">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefWidth="90.0" text="활성화">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefWidth="90.0" text="비활성화">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </FlowPane>
+            <FlowPane alignment="CENTER" hgap="30.0" vgap="20.0">
+               <children>
+                  <Button fx:id="btnSelectCamera1" mnemonicParsing="false" text="전방영상">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnSelectCamera2" mnemonicParsing="false" text="하방영상">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnPlayCamera" disable="true" mnemonicParsing="false" text="재생시작">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnPauseCamera" disable="true" mnemonicParsing="false" text="재생종료">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </FlowPane>
+         </children>
+      </VBox>
+   </children>
+</HBox>
